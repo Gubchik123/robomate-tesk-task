@@ -19,7 +19,9 @@ router = Router()
 @router.message(F.text.lower().in_(JOB_SITES))
 async def handle_resume(message: Message, state: FSMContext):
     """Handles the start of the given job site resume searching."""
-    await message.answer("Введіть позицію", reply_markup=get_cancel_keyboard())
+    await message.answer(
+        "Enter the position", reply_markup=get_cancel_keyboard()
+    )
     await state.set_state(Resume.position)
     await state.update_data(site_name=message.text.lower())
 
@@ -31,7 +33,7 @@ async def handle_position_input(message: Message, state: FSMContext):
     resume_scraper = get_resume_scraper_by_(data["site_name"])
 
     await message.answer(
-        "Оберіть або введіть локацію",
+        "Choose or enter the location",
         reply_markup=make_dict_inline_keyboard(
             resume_scraper.get_locations(), "location"
         ),
@@ -57,7 +59,7 @@ async def handle_location(
         event.answer if isinstance(event, Message) else event.message.edit_text
     )
     await answer_method(
-        "Оберіть досвід роботи",
+        "Choose the work experience",
         reply_markup=make_dict_inline_keyboard(
             resume_scraper.get_experience_by_(url), "experience"
         ),
@@ -81,7 +83,7 @@ async def handle_experience(query: CallbackQuery, state: FSMContext):
     if salary_from is None:
         return await _handle_salary_to(query, state)
     await query.message.edit_text(
-        "Оберіть зарплату від",
+        "Choose the salary from",
         reply_markup=make_dict_inline_keyboard(salary_from, "salary_from"),
     )
     await state.set_state(Resume.salary_from)
@@ -99,7 +101,7 @@ async def _handle_salary_to(query: CallbackQuery, state: FSMContext):
     if salary_to is None:
         return await _handle_search(query, state)
     await query.message.edit_text(
-        "Оберіть зарплату до",
+        "Choose the salary to",
         reply_markup=make_dict_inline_keyboard(salary_to, "salary_to"),
     )
     await state.set_state(Resume.salary_to)
@@ -125,7 +127,7 @@ async def handle_salary_from(query: CallbackQuery, state: FSMContext):
     if salary_to is None:
         return await _handle_search(query, state)
     await query.message.edit_text(
-        "Оберіть зарплату до",
+        "Choose the salary to",
         reply_markup=make_dict_inline_keyboard(salary_to, "salary_to"),
     )
     await state.set_state(Resume.salary_to)

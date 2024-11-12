@@ -51,8 +51,8 @@ def get_traceback_file_path() -> str:
 def get_user_error_message() -> str:
     """Returns the default user error message."""
     return (
-        "Виникла помилка! 😥\n\n"
-        "Адміністратори вже були сповіщені про це "
-        "і виправлять проблему якнайшвидше.\n\n"
-        "Будь ласка, спробуйте ще раз або перезапустіть бота командою /start."
+        "An error occured! 😥\n\n"
+        "Administrators have already been notified of that "
+        "and they will correct the problem as soon as possible.\n\n"
+        "Please try again or restart the bot with the /start command."
     )

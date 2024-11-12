@@ -11,8 +11,8 @@ async def handle_all_other_messages(message: Message):
     """Handles all other messages."""
     try:
         await message.answer(
-            "Я Вас не розумію :(\n"
-            "Раджу використати кнопки або команди для задуманого результату."
+            "I don't understand you :(\n"
+            "I advise you to use buttons or commands for the result."
         )
     except TelegramBadRequest:
         pass

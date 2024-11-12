@@ -11,7 +11,7 @@ router = Router()
 async def handle_menu(message: Message) -> None:
     """Handles main menu."""
     await message.answer(
-        "Ви у головному меню.\n"
-        "Виберіть подальші дії за допомогою кнопок нижче.",
+        "You are on the main menu.\n"
+        "Choose further steps using the buttons below.",
         reply_markup=get_menu_keyboard(),
     )

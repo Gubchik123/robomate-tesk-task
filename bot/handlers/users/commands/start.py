@@ -18,7 +18,7 @@ async def handle_start_command(message: Message):
         "CAACAgIAAxkBAAENG_pnMx2l0j2ceR1pPO86hRDoAAH9Fj4AAisHAAJjK-IJn8R5tQ5lfPI2BA"
     )
     await message.answer(
-        f"Привіт, {message.from_user.full_name}!\n"
-        "Я той, хто допоможе Вам знайти резюме з популярних сайтів роботи."
+        f"Hello, {message.from_user.full_name}!\n"
+        "I am the bot who will help you find a resume from popular work sites."
     )
     await handle_menu(message)
