@@ -12,3 +12,9 @@ ADMINS = [
 ]
 
 BASE_DIR = Path(__file__).parent.parent
+
+JOB_SITES = [
+    os.path.basename(dir[0]).replace("_", ".")
+    for dir in os.walk(BASE_DIR / "utils" / "resumes")
+    if not os.path.basename(dir[0]).endswith("__")
+][1:]
