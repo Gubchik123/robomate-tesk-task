@@ -133,7 +133,7 @@ class WorkUaScraper(JobSiteScraper):
                         f"- <a href='{res['link']}'>{res['position']}</a>"
                         f"{res['description']}\n"
                     )
-            message += f"<b>Time:</b>\n\n"
+            message += f"<b>Time:</b> {resume['time']}\n\n"
         return message
 
     @classmethod
