@@ -2,7 +2,6 @@ import logging
 import traceback
 from typing import Union
 
-from aiogram.utils.i18n import gettext as _
 from aiogram.types import Message, CallbackQuery
 
 from .admins import send_to_admins
@@ -51,18 +50,9 @@ def get_traceback_file_path() -> str:
 
 def get_user_error_message() -> str:
     """Returns the default user error message."""
-    try:
-        return _(
-            "An error occurred! 😥\n\n"
-            "The admins have already been notified about this "
-            "and will fix the problem as soon as possible.\n\n"
-            "Please, try again or restart the bot with the /start command."
-        )
-    except LookupError:
-        logging.warning("LookupError in the get_error_message function!")
-        return (
-            "An error occurred! 😥\n\n"
-            "The admins have already been notified about this "
-            "and will fix the problem as soon as possible.\n\n"
-            "Please, try again or restart the bot with the /start command."
-        )
+    return (
+        "Виникла помилка! 😥\n\n"
+        "Адміністратори вже були сповіщені про це "
+        "і виправлять проблему якнайшвидше.\n\n"
+        "Будь ласка, спробуйте ще раз або перезапустіть бота командою /start."
+    )
